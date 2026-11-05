@@ -117,15 +117,15 @@ html = f"""<!doctype html>
 *{{box-sizing:border-box;margin:0}}
 html,body{{height:100%;background:#0b1220;overflow:hidden;font-family:'IBM Plex Sans Thai',Tahoma,sans-serif}}
 #stage{{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center}}
-.slide{{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s ease}}
-.slide.on{{opacity:1;pointer-events:auto}}
+.slide{{position:absolute;inset:0;opacity:0;pointer-events:none;transform:scale(1.015);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .9s cubic-bezier(.22,1,.36,1)}}
+.slide.on{{opacity:1;pointer-events:auto;transform:none}}
 .slide>section{{position:relative;width:1920px;height:1080px;overflow:hidden}}
 h1{{line-height:1.1}} h2{{line-height:1.15}} h3{{line-height:1.2}} p{{line-height:1.4}}
 img,svg{{display:block}}
 table{{border-collapse:collapse;width:100%}} th,td{{padding:.35em .6em;text-align:left;border-bottom:1px solid #d3ccbc}}
 hr{{border:0}}
 .pie{{position:absolute;left:160px;top:330px;width:600px;height:600px}}
-[data-build-in]{{transition:opacity .5s ease,transform .5s ease}}
+[data-build-in]{{transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .8s cubic-bezier(.22,1,.36,1)}}
 [data-build-in].pending{{opacity:0}}
 [data-build-in^="rise"].pending{{transform:translateY(40px)}}
 [data-build-in^="left"].pending{{transform:translateX(-60px)}}
@@ -136,7 +136,9 @@ hr{{border:0}}
 /* phone portrait: one scrolling page, layout reflowed at a 760px virtual width */
 html.m,html.m body{{height:auto;overflow:auto}}
 .m #stage{{position:static;width:auto;height:auto;transform:none!important}}
-.m .slide{{position:relative;opacity:1;pointer-events:auto;width:760px;zoom:var(--z)}}
+.m .slide{{position:relative;opacity:0;pointer-events:auto;width:760px;zoom:var(--z);transform:translateY(32px)}}
+.m .slide.seen{{opacity:1;transform:none}}
+html.m{{scroll-behavior:smooth}}
 .m .slide>section{{width:760px!important;height:auto!important;padding:72px 40px!important;display:flex!important;flex-direction:column!important;gap:28px!important;overflow:visible}}
 .m section *:not(.pie *){{position:static!important;left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;max-width:100%!important}}
 .m section div:has(>img),.m section div:has(>div>table){{flex-wrap:wrap}}
@@ -150,6 +152,7 @@ html.m,html.m body{{height:auto;overflow:auto}}
 .m section>div[style*="border-radius:50%"],.m section>p[style*="width:340px"],.m section>div[style*="width:392px"]{{align-self:center}}
 .m [data-build-in].pending{{opacity:1;transform:none}}
 .m #count{{display:none}}
+@media (prefers-reduced-motion:reduce){{.slide,[data-build-in]{{transition:none!important}}.m .slide{{opacity:1;transform:none}}}}
 </style></head>
 <body>
 <div id="stage">
@@ -178,9 +181,12 @@ function prev(){{ if(step>0){{step--;paint();}} else if(i>0) show(i-1,true); }}
 function layout(){{
   root.classList.toggle('m',phone.matches);
   if(phone.matches){{ root.style.setProperty('--z',innerWidth/760); return; }}
+  slides.forEach(s=>s.classList.add('seen'));
   const k=Math.min(innerWidth/1920,innerHeight/1080);
   stage.style.transform=`translate(-50%,-50%) scale(${{k}})`;
 }}
+const io=new IntersectionObserver(es=>es.forEach(e=>{{ if(e.isIntersecting){{ e.target.classList.add('seen'); io.unobserve(e.target); }} }}),{{threshold:0.12}});
+slides.forEach(s=>io.observe(s));
 addEventListener('resize',layout); layout();
 addEventListener('keydown',e=>{{
   if(phone.matches) return;
