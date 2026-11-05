@@ -7,7 +7,7 @@
 <style>
 *{box-sizing:border-box;margin:0}
 html,body{height:100%;background:#0b1220;overflow:hidden;font-family:'IBM Plex Sans Thai',Tahoma,sans-serif}
-#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:0 0}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center}
 .slide{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s ease}
 .slide.on{opacity:1;pointer-events:auto}
 .slide>section{position:relative;width:1920px;height:1080px;overflow:hidden}
@@ -15,6 +15,7 @@ h1{line-height:1.1} h2{line-height:1.15} h3{line-height:1.2} p{line-height:1.4}
 img,svg{display:block}
 table{border-collapse:collapse;width:100%} th,td{padding:.35em .6em;text-align:left;border-bottom:1px solid #d3ccbc}
 hr{border:0}
+.pie{position:absolute;left:160px;top:330px;width:600px;height:600px}
 [data-build-in]{transition:opacity .5s ease,transform .5s ease}
 [data-build-in].pending{opacity:0}
 [data-build-in^="rise"].pending{transform:translateY(40px)}
@@ -22,19 +23,36 @@ hr{border:0}
 [data-build-in^="right"].pending{transform:translateX(60px)}
 [data-build-in^="pop"].pending{transform:scale(.85)}
 #count{position:fixed;right:16px;bottom:12px;color:#8a9bb8;font:14px system-ui;user-select:none}
+
+/* phone portrait: one scrolling page, layout reflowed at a 760px virtual width */
+html.m,html.m body{height:auto;overflow:auto}
+.m #stage{position:static;width:auto;height:auto;transform:none!important}
+.m .slide{position:relative;opacity:1;pointer-events:auto;width:760px;zoom:var(--z)}
+.m .slide>section{width:760px!important;height:auto!important;padding:72px 40px!important;display:flex!important;flex-direction:column!important;gap:28px!important;overflow:visible}
+.m section *:not(.pie *){position:static!important;left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;max-width:100%!important}
+.m section div:has(>img),.m section div:has(>div>table){flex-wrap:wrap}
+.m section h1{font-size:120px!important}
+.m section div[style*="width:460px"]{width:100%!important}
+.m section img{height:auto!important}
+.m section div:has(>table){flex-basis:100%!important}
+.m section div.pie{position:relative!important;align-self:center;flex:none}
+.m section .m-hide{display:none!important}
+.m section .m-arrow{rotate:90deg;align-self:center;margin:8px 0}
+.m section>div[style*="border-radius:50%"],.m section>p[style*="width:340px"],.m section>div[style*="width:392px"]{align-self:center}
+.m [data-build-in].pending{opacity:1;transform:none}
+.m #count{display:none}
 </style></head>
 <body>
 <div id="stage">
 <div class="slide"><section id="cover" data-transition="fade" style="display:flex; flex-direction:column; gap:40px; justify-content:center; padding:128px; background:#14233d">
-  <div style="position:absolute; top:160px; left:1100px; width:760px; height:760px; background:#00000000; border:2px solid #2e4366;border-radius:50%"></div>
-  <div style="position:absolute; top:320px; left:1260px; width:440px; height:440px; display:flex; flex-direction:column; border:2px solid #d4a85a; border-radius:256px; opacity:0.6">
+<div class="m-hide" style="position:absolute; top:160px; left:1100px; width:760px; height:760px; background:#00000000; border:2px solid #2e4366;border-radius:50%"></div>
+<div class="m-hide" style="position:absolute; top:320px; left:1260px; width:440px; height:440px; display:flex; flex-direction:column; border:2px solid #d4a85a; border-radius:256px; opacity:0.6">
   </div>
-  <p style="font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:28px; font-weight:600; letter-spacing:6px; color:#d4a85a">แนะนำการศึกษา · INTRODUCTION</p>
-  <h1 style="font-family:'Noto Serif Thai', Georgia, serif; font-size:160px; font-weight:600; line-height:1.05; color:#f6f4ef">Landmark<br>Forum</h1>
-  <div style="width:160px; height:4px; flex:0 0 auto; background:#d4a85a"></div>
-  <p style="width:1000px; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:40px; line-height:1.5; color:#c9d2e0">เปิดมุมมองใหม่ ต่อชีวิต ความสัมพันธ์ และผลลัพธ์ที่คุณต้องการ</p>
-  <p style="position:absolute; bottom:96px; left:128px; width:900px; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:32px; font-weight:500; color:#f6f4ef">บิน พนาสันต์</p>
-  
+<p style="font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:28px; font-weight:600; letter-spacing:6px; color:#d4a85a">แนะนำการศึกษา · INTRODUCTION</p>
+<h1 style="font-family:'Noto Serif Thai', Georgia, serif; font-size:160px; font-weight:600; line-height:1.05; color:#f6f4ef">Landmark<br>Forum</h1>
+<div style="width:160px; height:4px; flex:0 0 auto; background:#d4a85a"></div>
+<p style="width:1000px; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:40px; line-height:1.5; color:#c9d2e0">เปิดมุมมองใหม่ ต่อชีวิต ความสัมพันธ์ และผลลัพธ์ที่คุณต้องการ</p>
+<p style="position:absolute; bottom:96px; left:128px; width:900px; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:32px; font-weight:500; color:#f6f4ef">บิน พนาสันต์</p>
 </section></div>
 <div class="slide"><section id="questions" data-transition="fade" style="background:#F6F4EF;color:#14233D;font-family:'IBM Plex Sans Thai', Tahoma, sans-serif;padding:128px;display:flex;flex-direction:column;gap:56px">
 <div style="display:flex;flex-direction:column;gap:16px">
@@ -55,22 +73,21 @@ hr{border:0}
 <p style="font-size:48px;line-height:1.4;color:#14233D">ด้านไหนในชีวิต ที่ต้องทน และไม่อยากทนอยู่ตรงนี้แล้ว</p>
 </div>
 </div>
-
 </section></div>
 <div class="slide"><section id="blindspot" data-transition="fade" style="background:#F6F4EF;color:#14233D;font-family:'IBM Plex Sans Thai', Tahoma, sans-serif;padding:128px;display:flex;flex-direction:column;gap:16px">
 <p style="font-size:28px;letter-spacing:6px;color:#8C6420;font-weight:600">ลองดูวงกลมนี้ · ALL WE KNOW</p>
 <h2 style="font-family:'Noto Serif Thai', Georgia, serif;font-size:72px;font-weight:600;line-height:1.3;color:#14233D">ความรู้ทั้งหมดในชีวิตเรา</h2>
-<svg aria-label="วงกลมแทนความรู้ทั้งหมด ยังไม่แบ่งส่วน" style="position:absolute;left:160px;top:330px;width:600px;height:600px" width="600" height="600" viewBox="0 0 600 600"><circle cx="300" cy="300" r="290" fill="#E6E0D3" stroke="#D8D2C4" stroke-width="2"/></svg>
-<svg data-build-in="fade 1" aria-label="ส่วนที่ 1 รู้ว่ารู้ ส่วนเล็ก" style="position:absolute;left:160px;top:330px;width:600px;height:600px" width="600" height="600" viewBox="0 0 600 600"><path d="M300,300 L300,10 A290,290 0 0 1 505.06,94.94 Z" fill="#D4A85A" stroke="#F6F4EF" stroke-width="4"/></svg>
-<svg data-build-in="fade 2" aria-label="ส่วนที่ 2 รู้ว่าไม่รู้ ส่วนเล็ก" style="position:absolute;left:160px;top:330px;width:600px;height:600px" width="600" height="600" viewBox="0 0 600 600"><path d="M300,300 L505.06,94.94 A290,290 0 0 1 590,300 Z" fill="#4A6C96" stroke="#F6F4EF" stroke-width="4"/></svg>
-<svg data-build-in="fade 3" aria-label="ส่วนที่ 3 ไม่รู้ว่าไม่รู้ ส่วนที่ใหญ่ที่สุด" style="position:absolute;left:160px;top:330px;width:600px;height:600px" width="600" height="600" viewBox="0 0 600 600"><path d="M300,300 L590,300 A290,290 0 1 1 300,10 Z" fill="#AFC0D4" stroke="#F6F4EF" stroke-width="4"/></svg>
-<p data-build-in="fade 1" style="position:absolute;left:502px;top:430px;width:60px;font-size:32px;font-weight:700;text-align:center;color:#14233D">1</p>
-<p data-build-in="fade 2" style="position:absolute;left:605px;top:530px;width:60px;font-size:32px;font-weight:700;text-align:center;color:#F6F4EF">2</p>
-<p data-build-in="fade 3" style="position:absolute;left:290px;top:656px;width:340px;font-size:40px;font-weight:600;color:#14233D;text-align:center">ไม่รู้ว่าไม่รู้</p>
-<div data-build-in="pop 4" style="position:absolute;left:320px;top:730px;width:280px;display:flex;flex-direction:column;align-items:center;gap:2px;background:#14233D;border-radius:12px;padding:12px 16px">
+<div class="pie"><svg aria-label="วงกลมแทนความรู้ทั้งหมด ยังไม่แบ่งส่วน" style="position:absolute;left:0px;top:0px;width:600px;height:600px" width="600" height="600" viewBox="0 0 600 600"><circle cx="300" cy="300" r="290" fill="#E6E0D3" stroke="#D8D2C4" stroke-width="2"/></svg>
+<svg data-build-in="fade 1" aria-label="ส่วนที่ 1 รู้ว่ารู้ ส่วนเล็ก" style="position:absolute;left:0px;top:0px;width:600px;height:600px" width="600" height="600" viewBox="0 0 600 600"><path d="M300,300 L300,10 A290,290 0 0 1 505.06,94.94 Z" fill="#D4A85A" stroke="#F6F4EF" stroke-width="4"/></svg>
+<svg data-build-in="fade 2" aria-label="ส่วนที่ 2 รู้ว่าไม่รู้ ส่วนเล็ก" style="position:absolute;left:0px;top:0px;width:600px;height:600px" width="600" height="600" viewBox="0 0 600 600"><path d="M300,300 L505.06,94.94 A290,290 0 0 1 590,300 Z" fill="#4A6C96" stroke="#F6F4EF" stroke-width="4"/></svg>
+<svg data-build-in="fade 3" aria-label="ส่วนที่ 3 ไม่รู้ว่าไม่รู้ ส่วนที่ใหญ่ที่สุด" style="position:absolute;left:0px;top:0px;width:600px;height:600px" width="600" height="600" viewBox="0 0 600 600"><path d="M300,300 L590,300 A290,290 0 1 1 300,10 Z" fill="#AFC0D4" stroke="#F6F4EF" stroke-width="4"/></svg>
+<p data-build-in="fade 1" style="position:absolute;left:342px;top:100px;width:60px;font-size:32px;font-weight:700;text-align:center;color:#14233D">1</p>
+<p data-build-in="fade 2" style="position:absolute;left:445px;top:200px;width:60px;font-size:32px;font-weight:700;text-align:center;color:#F6F4EF">2</p>
+<p data-build-in="fade 3" style="position:absolute;left:130px;top:326px;width:340px;font-size:40px;font-weight:600;color:#14233D;text-align:center">ไม่รู้ว่าไม่รู้</p>
+<div data-build-in="pop 4" style="position:absolute;left:160px;top:400px;width:280px;display:flex;flex-direction:column;align-items:center;gap:2px;background:#14233D;border-radius:12px;padding:12px 16px">
 <p style="font-size:36px;font-weight:700;color:#F6F4EF;text-align:center">จุดบอด</p>
 <p style="font-size:24px;letter-spacing:4px;color:#D4A85A;text-align:center">BLIND SPOTS</p>
-</div>
+</div></div>
 <div data-build-in="rise 1" style="position:absolute;left:880px;top:340px;width:912px;display:flex;flex-direction:row;gap:32px;align-items:start;padding:0 0 24px;border-bottom:2px solid #D8D2C4">
 <p style="font-size:24px;font-weight:700;color:#14233D;background:#D4A85A;border-radius:50%;width:56px;height:56px;text-align:center;line-height:2.3">1</p>
 <div style="display:flex;flex-direction:column;gap:4px;flex:1">
@@ -96,7 +113,6 @@ hr{border:0}
 <h3 style="font-size:40px;font-weight:700;line-height:1.3;color:#14233D">นี่คือ “จุดบอด” · <span style="color:#8C6420">Blind spots</span></h3>
 <p style="font-size:28px;line-height:1.5;color:#14233D">พื้นที่ที่ใหญ่ที่สุด และเป็นพื้นที่ที่ Landmark Forum ทำงานด้วย</p>
 </div>
-
 </section></div>
 <div class="slide"><section id="past" data-transition="fade" style="background:#ECE8DF;color:#14233D;font-family:'IBM Plex Sans Thai', Tahoma, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:16px">
 <h2 style="font-family:'Noto Serif Thai', Georgia, serif;font-size:72px;font-weight:600;line-height:1.3;color:#14233D">อดีต → ปัจจุบัน</h2>
@@ -105,20 +121,19 @@ hr{border:0}
 <p style="font-size:24px;letter-spacing:6px;color:#D4A85A;text-align:center">PAST</p>
 </div>
 <p style="position:absolute;left:230px;top:720px;width:340px;font-size:28px;line-height:1.4;color:#4A5263;text-align:center">ถูกเปรียบเทียบ กับคนอื่นตั้งแต่เด็ก</p>
-<svg data-build-in="left 1" style="position:absolute;left:610px;top:495px;width:140px;height:70px;" viewBox="0 0 100 50" preserveAspectRatio="none"><polygon points="0,15 60,15 60,0 100,25 60,50 60,35 0,35" fill="#B8893A"/></svg>
+<svg class="m-arrow" data-build-in="left 1" style="position:absolute;left:610px;top:495px;width:140px;height:70px;" viewBox="0 0 100 50" preserveAspectRatio="none"><polygon points="0,15 60,15 60,0 100,25 60,50 60,35 0,35" fill="#B8893A"/></svg>
 <div id="c-present" data-build-in="fade 1" style="position:absolute;left:790px;top:360px;width:340px;height:340px;border-radius:50%;background:#F6F4EF;border:6px solid #14233D;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
 <p style="font-family:'Noto Serif Thai', Georgia, serif;font-size:56px;font-weight:600;color:#14233D;text-align:center">ปัจจุบัน</p>
 <p style="font-size:24px;letter-spacing:6px;color:#8C6420;text-align:center">PRESENT</p>
 </div>
 <p data-build-in="fade 2" style="position:absolute;left:790px;top:720px;width:340px;font-size:28px;line-height:1.4;font-weight:600;color:#14233D;text-align:center">“ฉันไม่ดีพอ”</p>
 <p data-build-in="fade 3" style="position:absolute;left:128px;top:830px;width:1664px;font-size:32px;line-height:1.5;font-weight:600;color:#14233D;text-align:center">เหตุการณ์จบแล้ว แต่ความเชื่อจากมัน ยังติดมาถึงวันนี้</p>
-<div style="position:absolute;left:128px;bottom:64px;width:1664px;display:flex;flex-direction:row;gap:40px">
+<div class="m-hide" style="position:absolute;left:128px;bottom:64px;width:1664px;display:flex;flex-direction:row;gap:40px">
 <p style="font-size:24px;font-weight:700;color:#8C6420">1 อดีต → ปัจจุบัน</p>
 <p style="font-size:24px;color:#6A7180">2 อนาคตที่คาดการณ์ได้</p>
 <p style="font-size:24px;color:#6A7180">3 กระดานอดีต</p>
 <p style="font-size:24px;color:#6A7180">4 กระดานใหม่</p>
 </div>
-
 </section></div>
 <div class="slide"><section id="pattern" data-transition="fade" style="background:#ECE8DF;color:#14233D;font-family:'IBM Plex Sans Thai', Tahoma, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:16px">
 <h2 style="font-family:'Noto Serif Thai', Georgia, serif;font-size:72px;font-weight:600;line-height:1.3;color:#14233D">อนาคตที่คาดการณ์ได้</h2>
@@ -127,28 +142,27 @@ hr{border:0}
 <p style="font-size:24px;letter-spacing:6px;color:#D4A85A;text-align:center">PAST</p>
 </div>
 <p style="position:absolute;left:230px;top:720px;width:340px;font-size:28px;line-height:1.4;color:#4A5263;text-align:center">ถูกเปรียบเทียบ กับคนอื่นตั้งแต่เด็ก</p>
-<svg style="position:absolute;left:610px;top:495px;width:140px;height:70px;" viewBox="0 0 100 50" preserveAspectRatio="none"><polygon points="0,15 60,15 60,0 100,25 60,50 60,35 0,35" fill="#B8893A"/></svg>
+<svg class="m-arrow" style="position:absolute;left:610px;top:495px;width:140px;height:70px;" viewBox="0 0 100 50" preserveAspectRatio="none"><polygon points="0,15 60,15 60,0 100,25 60,50 60,35 0,35" fill="#B8893A"/></svg>
 <div id="c-present" style="position:absolute;left:790px;top:360px;width:340px;height:340px;border-radius:50%;background:#F6F4EF;border:6px solid #14233D;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
 <p style="font-family:'Noto Serif Thai', Georgia, serif;font-size:56px;font-weight:600;color:#14233D;text-align:center">ปัจจุบัน</p>
 <p style="font-size:24px;letter-spacing:6px;color:#8C6420;text-align:center">PRESENT</p>
 </div>
 <p style="position:absolute;left:790px;top:720px;width:340px;font-size:28px;line-height:1.4;font-weight:600;color:#14233D;text-align:center">“ฉันไม่ดีพอ”</p>
-<svg data-build-in="left 1" style="position:absolute;left:1170px;top:495px;width:140px;height:70px;" viewBox="0 0 100 50" preserveAspectRatio="none"><polygon points="0,15 60,15 60,0 100,25 60,50 60,35 0,35" fill="#B8893A"/></svg>
+<svg class="m-arrow" data-build-in="left 1" style="position:absolute;left:1170px;top:495px;width:140px;height:70px;" viewBox="0 0 100 50" preserveAspectRatio="none"><polygon points="0,15 60,15 60,0 100,25 60,50 60,35 0,35" fill="#B8893A"/></svg>
 <div data-build-in="fade 1" style="position:absolute;left:1350px;top:360px;width:340px;height:340px;border-radius:50%;border:6px dashed #8C6420;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
 <p style="font-family:'Noto Serif Thai', Georgia, serif;font-size:56px;font-weight:600;color:#8C6420;text-align:center">อนาคต</p>
 <p style="font-size:24px;color:#8C6420;text-align:center">ที่คาดการณ์ได้</p>
 </div>
 <p data-build-in="fade 1" style="position:absolute;left:1350px;top:720px;width:340px;font-size:28px;line-height:1.4;color:#4A5263;text-align:center">ไม่กล้าพูด ไม่กล้าขอ</p>
-<svg data-build-in="fade 2" aria-label="ลูกศรวนจากอนาคตกลับไปที่อดีต แสดงรูปแบบที่ซ้ำเดิม" style="position:absolute;left:392px;top:296px;width:1136px;height:66px" width="1136" height="66" viewBox="0 0 1136 66"><path d="M1128,62 Q1128,12 1076,12 L60,12 Q8,12 8,42" fill="none" stroke="#8C6420" stroke-width="4" stroke-dasharray="14 10"/><polygon points="8,64 0,42 16,42" fill="#8C6420"/></svg>
-<p data-build-in="fade 2" style="position:absolute;left:760px;top:290px;width:400px;font-size:24px;letter-spacing:4px;font-weight:600;color:#8C6420;background:#ECE8DF;text-align:center">วนซ้ำแบบเดิม</p>
+<svg class="m-hide" data-build-in="fade 2" aria-label="ลูกศรวนจากอนาคตกลับไปที่อดีต แสดงรูปแบบที่ซ้ำเดิม" style="position:absolute;left:392px;top:296px;width:1136px;height:66px" width="1136" height="66" viewBox="0 0 1136 66"><path d="M1128,62 Q1128,12 1076,12 L60,12 Q8,12 8,42" fill="none" stroke="#8C6420" stroke-width="4" stroke-dasharray="14 10"/><polygon points="8,64 0,42 16,42" fill="#8C6420"/></svg>
+<p class="m-hide" data-build-in="fade 2" style="position:absolute;left:760px;top:290px;width:400px;font-size:24px;letter-spacing:4px;font-weight:600;color:#8C6420;background:#ECE8DF;text-align:center">วนซ้ำแบบเดิม</p>
 <p data-build-in="fade 3" style="position:absolute;left:128px;top:830px;width:1664px;font-size:32px;line-height:1.5;font-weight:600;color:#14233D;text-align:center">ถ้าไม่มีอะไรเปลี่ยน อนาคตก็คืออดีตซ้ำเดิม</p>
-<div style="position:absolute;left:128px;bottom:64px;width:1664px;display:flex;flex-direction:row;gap:40px">
+<div class="m-hide" style="position:absolute;left:128px;bottom:64px;width:1664px;display:flex;flex-direction:row;gap:40px">
 <p style="font-size:24px;color:#6A7180">1 อดีต → ปัจจุบัน</p>
 <p style="font-size:24px;font-weight:700;color:#8C6420">2 อนาคตที่คาดการณ์ได้</p>
 <p style="font-size:24px;color:#6A7180">3 กระดานอดีต</p>
 <p style="font-size:24px;color:#6A7180">4 กระดานใหม่</p>
 </div>
-
 </section></div>
 <div class="slide"><section id="board" data-transition="fade" style="background:#ECE8DF;color:#14233D;font-family:'IBM Plex Sans Thai', Tahoma, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
 <h2 style="font-family:'Noto Serif Thai', Georgia, serif;font-size:72px;font-weight:600;line-height:1.3;color:#14233D">กระดานอดีต</h2>
@@ -177,13 +191,12 @@ hr{border:0}
 </div>
 </div>
 </div>
-<div style="position:absolute;left:128px;bottom:64px;width:1664px;display:flex;flex-direction:row;gap:40px">
+<div class="m-hide" style="position:absolute;left:128px;bottom:64px;width:1664px;display:flex;flex-direction:row;gap:40px">
 <p style="font-size:24px;color:#6A7180">1 อดีต → ปัจจุบัน</p>
 <p style="font-size:24px;color:#6A7180">2 อนาคตที่คาดการณ์ได้</p>
 <p style="font-size:24px;font-weight:700;color:#8C6420">3 กระดานอดีต</p>
 <p style="font-size:24px;color:#6A7180">4 กระดานใหม่</p>
 </div>
-
 </section></div>
 <div class="slide"><section id="blankboard" data-transition="fade" style="background:#F6F4EF;color:#14233D;font-family:'IBM Plex Sans Thai', Tahoma, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
 <h2 style="font-family:'Noto Serif Thai', Georgia, serif;font-size:72px;font-weight:600;line-height:1.3;color:#14233D">กระดานใหม่</h2>
@@ -211,13 +224,12 @@ hr{border:0}
 </div>
 </div>
 </div>
-<div style="position:absolute;left:128px;bottom:64px;width:1664px;display:flex;flex-direction:row;gap:40px">
+<div class="m-hide" style="position:absolute;left:128px;bottom:64px;width:1664px;display:flex;flex-direction:row;gap:40px">
 <p style="font-size:24px;color:#6A7180">1 อดีต → ปัจจุบัน</p>
 <p style="font-size:24px;color:#6A7180">2 อนาคตที่คาดการณ์ได้</p>
 <p style="font-size:24px;color:#6A7180">3 กระดานอดีต</p>
 <p style="font-size:24px;font-weight:700;color:#8C6420">4 กระดานใหม่</p>
 </div>
-
 </section></div>
 <div class="slide"><section id="people" data-transition="fade" style="background:#F6F4EF;color:#14233D;font-family:'IBM Plex Sans Thai', Tahoma, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:16px">
 <p style="font-size:28px;letter-spacing:6px;color:#8C6420;font-weight:600">ผู้เข้าร่วม · WHO JOINS</p>
@@ -251,7 +263,6 @@ hr{border:0}
 </div>
 </div>
 <p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:28px;font-style:italic;color:#4A5263;text-align:center">Landmark ไม่ได้มีไว้ซ่อมแซมหรือแก้ปมใคร — ปมที่คลี่คลายลง เป็นเพียงผลพลอยได้</p>
-
 </section></div>
 <div class="slide"><section id="benefits" data-transition="fade" style="background:#ECE8DF;color:#14233D;font-family:'IBM Plex Sans Thai', Tahoma, sans-serif;padding:128px;display:grid;grid-template-columns:520px 1fr;gap:80px;align-items:start">
 <div style="display:flex;flex-direction:column;gap:16px">
@@ -281,14 +292,13 @@ hr{border:0}
 <div style="display:flex;flex-direction:column;gap:2px;flex:1"><p style="font-size:40px;font-weight:600;line-height:1.35;color:#14233D">ความสุข ความสงบในใจ</p><p style="font-size:24px;color:#4A5263">Happiness, Peace of Mind</p></div>
 </div>
 </div>
-
 </section></div>
 <div class="slide"><section id="schedule" data-transition="fade" style="display:flex; flex-direction:column; gap:48px; padding:128px 128px 160px; background:#f6f4ef">
-  <div style="display:flex; flex-direction:column; gap:16px">
+<div style="display:flex; flex-direction:column; gap:16px">
     <p style="font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:28px; font-weight:600; letter-spacing:6px; color:#8c6420">รอบเรียน · SCHEDULE 2569</p>
     <h2 style="font-family:'Noto Serif Thai', Georgia, serif; font-size:72px; font-weight:600; line-height:1.3; color:#14233d">รอบเรียน Landmark Forum</h2>
   </div>
-  <div style="display:flex; flex-direction:row; gap:56px; flex:1">
+<div style="display:flex; flex-direction:row; gap:56px; flex:1">
     <div style="display:flex; flex-direction:column; flex:1">
       <table style="font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:30px; color:#14233d">
         <tr style="background:#14233d"><th style="width:56%; color:#f6f4ef">วันที่</th><th style="width:28%; color:#f6f4ef">รูปแบบ</th><th style="width:16%; color:#f6f4ef">หมายเหตุ</th></tr>
@@ -312,14 +322,14 @@ hr{border:0}
       </div>
     </div>
   </div>
-  <p style="position:absolute; bottom:64px; left:128px; width:1664px; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:24px; color:#6a7180">ข้อมูล ณ 15/10/69 · รอบและราคาอาจเปลี่ยนแปลง กรุณาตรวจสอบกับผู้แนะนำก่อนลงทะเบียน</p>
-  
+<p style="position:absolute; bottom:64px; left:128px; width:1664px; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:24px; color:#6a7180">ข้อมูล ณ 15/10/69 · รอบและราคาอาจเปลี่ยนแปลง กรุณาตรวจสอบกับผู้แนะนำก่อนลงทะเบียน</p>
 </section></div>
 </div>
 <div id="count"></div>
 <script>
 const slides=[...document.querySelectorAll('.slide')];
-const stage=document.getElementById('stage'), count=document.getElementById('count');
+const stage=document.getElementById('stage'), count=document.getElementById('count'), root=document.documentElement;
+const phone=matchMedia('(max-width: 900px) and (orientation: portrait)');
 let i=0, step=0;
 const order=el=>parseInt((el.dataset.buildIn.split(' ')[1])||'1',10);
 const steps=s=>Math.max(0,...[...s.querySelectorAll('[data-build-in]')].map(order));
@@ -327,7 +337,7 @@ function show(n,full){
   i=Math.max(0,Math.min(slides.length-1,n));
   step=full?steps(slides[i]):0;
   slides.forEach((s,k)=>s.classList.toggle('on',k===i));
-  paint(); location.hash=i+1;
+  paint(); history.replaceState(null,'','#'+(i+1));
 }
 function paint(){
   slides[i].querySelectorAll('[data-build-in]').forEach(el=>el.classList.toggle('pending',order(el)>step));
@@ -335,17 +345,21 @@ function paint(){
 }
 function next(){ if(step<steps(slides[i])){step++;paint();} else if(i<slides.length-1) show(i+1); }
 function prev(){ if(step>0){step--;paint();} else if(i>0) show(i-1,true); }
-function fit(){ const k=Math.min(innerWidth/1920,innerHeight/1080);
-  stage.style.transform=`scale(${k}) translate(-50%,-50%)`; stage.style.left=stage.style.top='50%';
-  stage.style.transform=`translate(-50%,-50%) scale(${k})`; stage.style.transformOrigin='center'; }
-addEventListener('resize',fit); fit();
+function layout(){
+  root.classList.toggle('m',phone.matches);
+  if(phone.matches){ root.style.setProperty('--z',innerWidth/760); return; }
+  const k=Math.min(innerWidth/1920,innerHeight/1080);
+  stage.style.transform=`translate(-50%,-50%) scale(${k})`;
+}
+addEventListener('resize',layout); layout();
 addEventListener('keydown',e=>{
+  if(phone.matches) return;
   if(['ArrowRight','ArrowDown','PageDown',' ','Enter'].includes(e.key)){e.preventDefault();next();}
   else if(['ArrowLeft','ArrowUp','PageUp','Backspace'].includes(e.key)){e.preventDefault();prev();}
   else if(e.key==='Home') show(0); else if(e.key==='End') show(slides.length-1,true);
-  else if(e.key==='f') document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();
+  else if(e.key==='f') document.fullscreenElement?document.exitFullscreen():root.requestFullscreen();
 });
-addEventListener('click',e=>{ e.clientX<innerWidth/3?prev():next(); });
+addEventListener('click',e=>{ if(phone.matches) return; e.clientX<innerWidth/3?prev():next(); });
 show((parseInt(location.hash.slice(1),10)||1)-1);
 </script>
 </body></html>
