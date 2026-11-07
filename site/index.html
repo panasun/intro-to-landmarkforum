@@ -17,11 +17,12 @@ table{border-collapse:collapse;width:100%} th,td{padding:.35em .6em;text-align:l
 hr{border:0}
 .pie{position:absolute;left:160px;top:330px;width:600px;height:600px}
 [data-build-in]{transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .8s cubic-bezier(.22,1,.36,1)}
-[data-build-in].pending{opacity:0}
-[data-build-in^="rise"].pending{transform:translateY(40px)}
-[data-build-in^="left"].pending{transform:translateX(-60px)}
-[data-build-in^="right"].pending{transform:translateX(60px)}
-[data-build-in^="pop"].pending{transform:scale(.85)}
+[data-build-in]:not(.shown){opacity:0}
+.reset [data-build-in]{transition:none!important}
+[data-build-in^="rise"]:not(.shown){transform:translateY(40px)}
+[data-build-in^="left"]:not(.shown){transform:translateX(-60px)}
+[data-build-in^="right"]:not(.shown){transform:translateX(60px)}
+[data-build-in^="pop"]:not(.shown){transform:scale(.85)}
 #count{position:fixed;right:16px;bottom:12px;color:#8a9bb8;font:14px system-ui;user-select:none}
 
 /* phone portrait: one scrolling page, layout reflowed at a 760px virtual width */
@@ -41,7 +42,7 @@ html.m{scroll-behavior:smooth}
 .m section .m-hide{display:none!important}
 .m section .m-arrow{rotate:90deg;align-self:center;margin:8px 0}
 .m section>div[style*="border-radius:50%"],.m section>p[style*="width:340px"],.m section>div[style*="width:392px"]{align-self:center}
-.m [data-build-in].pending{opacity:1;transform:none}
+.m [data-build-in]{opacity:1!important;transform:none!important}
 .m #count{display:none}
 @media (prefers-reduced-motion:reduce){.slide,[data-build-in]{transition:none!important}.m .slide{opacity:1;transform:none}}
 </style></head>
@@ -298,10 +299,11 @@ function show(n,full){
   i=Math.max(0,Math.min(slides.length-1,n));
   step=full?steps(slides[i]):0;
   slides.forEach((s,k)=>s.classList.toggle('on',k===i));
-  paint(); history.replaceState(null,'','#'+(i+1));
+  const s=slides[i]; s.classList.add('reset'); paint(); void s.offsetWidth; s.classList.remove('reset');
+  history.replaceState(null,'','#'+(i+1));
 }
 function paint(){
-  slides[i].querySelectorAll('[data-build-in]').forEach(el=>el.classList.toggle('pending',order(el)>step));
+  slides[i].querySelectorAll('[data-build-in]').forEach(el=>el.classList.toggle('shown',order(el)<=step));
   count.textContent=(i+1)+' / '+slides.length;
 }
 function next(){ if(step<steps(slides[i])){step++;paint();} else if(i<slides.length-1) show(i+1); }
