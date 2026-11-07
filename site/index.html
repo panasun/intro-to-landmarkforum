@@ -32,13 +32,13 @@ html.m,html.m body{height:auto;overflow:auto}
 .m .slide.seen{opacity:1;transform:none}
 html.m{scroll-behavior:smooth}
 .m .slide>section{width:760px!important;height:auto!important;padding:72px 40px!important;display:flex!important;flex-direction:column!important;gap:28px!important;overflow:visible}
-.m section *:not(.pie *){position:static!important;left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;max-width:100%!important}
+.m section *:not(.pie *):not([id=people-ring] *){position:static!important;left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;max-width:100%!important}
 .m section div:has(>img),.m section div:has(>div>table){flex-wrap:wrap}
 .m section h1{font-size:120px!important}
 .m section div[style*="width:460px"]{width:100%!important}
 .m section img{height:auto!important}
 .m section div:has(>table){flex-basis:100%!important}
-.m section div.pie{position:relative!important;align-self:center;flex:none}
+.m .slide section div.pie,.m .slide section div[id=people-ring]{position:relative!important;align-self:center;flex:none}
 .m section .m-hide{display:none!important}
 .m section .m-arrow{rotate:90deg;align-self:center;margin:8px 0}
 .m section>div[style*="border-radius:50%"],.m section>p[style*="width:340px"],.m section>div[style*="width:392px"]{align-self:center}
@@ -57,6 +57,38 @@ html.m{scroll-behavior:smooth}
 <div style="width:160px; height:4px; flex:0 0 auto; background:#d4a85a"></div>
 <p style="width:1000px; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:40px; line-height:1.5; color:#c9d2e0">เปิดมุมมองใหม่ ต่อชีวิต ความสัมพันธ์ และผลลัพธ์ที่คุณต้องการ</p>
 <p style="position:absolute; bottom:96px; left:128px; width:900px; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:32px; font-weight:500; color:#f6f4ef">บิน พนาสันต์</p>
+</section></div>
+<div class="slide"><section id="listening" data-transition="fade" style="display:flex; flex-direction:column; gap:16px; padding:128px; background:#f6f4ef">
+<p style="font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:28px; font-weight:600; letter-spacing:6px; color:#8c6420">ALWAYS ALREADY LISTENING</p>
+<h2 style="font-family:'Noto Serif Thai', Georgia, serif; font-size:72px; font-weight:600; line-height:1.3; color:#14233d">การฟังที่มีอยู่แล้วตลอดเวลา</h2>
+<div data-build-in="rise 1" style="position:absolute; top:340px; left:128px; width:880px; display:flex; flex-direction:row; gap:32px; align-items:center; padding:0 0 26px; border-bottom:2px solid #d8d2c4">
+    <p style="width:72px; height:72px; flex:0 0 auto; font-family:'Noto Serif Thai', Georgia, serif; font-size:32px; font-weight:700; line-height:2.25; text-align:center; color:#14233d; background:#d4a85a; border-radius:256px">1</p>
+    <p style="flex:1; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:44px; font-weight:600; line-height:1.35; color:#14233d">กับใคร?</p>
+  </div>
+<div data-build-in="rise 2" style="position:absolute; top:490px; left:128px; width:880px; display:flex; flex-direction:row; gap:32px; align-items:center; padding:0 0 26px; border-bottom:2px solid #d8d2c4">
+    <p style="width:72px; height:72px; flex:0 0 auto; font-family:'Noto Serif Thai', Georgia, serif; font-size:32px; font-weight:700; line-height:2.25; text-align:center; color:#14233d; background:#d4a85a; border-radius:256px">2</p>
+    <p style="flex:1; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:44px; font-weight:600; line-height:1.35; color:#14233d">เสียงนั้นพูดว่าอะไร?</p>
+  </div>
+<div data-build-in="rise 3" style="position:absolute; top:640px; left:128px; width:880px; display:flex; flex-direction:row; gap:32px; align-items:center; padding:0 0 26px; border-bottom:2px solid #d8d2c4">
+    <p style="width:72px; height:72px; flex:0 0 auto; font-family:'Noto Serif Thai', Georgia, serif; font-size:32px; font-weight:700; line-height:2.25; text-align:center; color:#14233d; background:#d4a85a; border-radius:256px">3</p>
+    <p style="flex:1; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:44px; font-weight:600; line-height:1.35; color:#14233d">การกระทำที่สอดคล้อง เป็นแบบไหน?</p>
+  </div>
+<div data-build-in="rise 4" style="position:absolute; top:790px; left:128px; width:880px; display:flex; flex-direction:row; gap:32px; align-items:center; padding:0 0 26px; border-bottom:2px solid #d8d2c4">
+    <p style="width:72px; height:72px; flex:0 0 auto; font-family:'Noto Serif Thai', Georgia, serif; font-size:32px; font-weight:700; line-height:2.25; text-align:center; color:#14233d; background:#d4a85a; border-radius:256px">4</p>
+    <p style="flex:1; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:44px; font-weight:600; line-height:1.35; color:#14233d">ผลกระทบที่เกิดขึ้น ในชีวิตคุณคืออะไร?</p>
+  </div>
+<div id="people-ring" style="position:absolute;left:1140px;top:330px;width:640px;height:640px;border-radius:50%;background:#FBF8F1;border:8px solid #14233D;box-shadow:0 0 0 14px #F3E6CC, 0 0 0 16px #D4A85A, 0 24px 60px rgba(20,35,61,0.12)">
+<div style="position:absolute;left:170px;top:250px;width:300px;height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px"><p style="font-family:'Noto Serif Thai', Georgia, serif;font-size:60px;font-weight:600;line-height:1.2;color:#14233D;text-align:center;white-space:nowrap">คนในชีวิต</p><p style="font-size:18px;letter-spacing:5px;color:#8C6420;text-align:center;white-space:nowrap">PEOPLE IN YOUR LIFE</p></div>
+<div style="position:absolute;left:200px;top:503px;width:240px;height:64px;display:flex;align-items:center;justify-content:center"><p style="font-size:32px;font-weight:600;color:#14233D;background:#FFFFFF;border:2px solid #E6E0D3;border-radius:40px;padding:2px 24px;line-height:1.4;white-space:nowrap;box-shadow:0 4px 12px rgba(20,35,61,0.08)">เพื่อนร่วมงาน</p></div>
+<div style="position:absolute;left:68px;top:453px;width:240px;height:64px;display:flex;align-items:center;justify-content:center"><p style="font-size:32px;font-weight:600;color:#4A6C96;background:#FFFFFF;border:2px solid #E6E0D3;border-radius:40px;padding:2px 24px;line-height:1.4;white-space:nowrap;box-shadow:0 4px 12px rgba(20,35,61,0.08)">เพื่อน</p></div>
+<div style="position:absolute;left:-2px;top:325px;width:240px;height:64px;display:flex;align-items:center;justify-content:center"><p style="font-size:32px;font-weight:600;color:#8C6420;background:#FFFFFF;border:2px solid #E6E0D3;border-radius:40px;padding:2px 24px;line-height:1.4;white-space:nowrap;box-shadow:0 4px 12px rgba(20,35,61,0.08)">พี่/น้อง</p></div>
+<div style="position:absolute;left:22px;top:180px;width:240px;height:64px;display:flex;align-items:center;justify-content:center"><p style="font-size:32px;font-weight:600;color:#9C4A3C;background:#FFFFFF;border:2px solid #E6E0D3;border-radius:40px;padding:2px 24px;line-height:1.4;white-space:nowrap;box-shadow:0 4px 12px rgba(20,35,61,0.08)">ลูก</p></div>
+<div style="position:absolute;left:130px;top:86px;width:240px;height:64px;display:flex;align-items:center;justify-content:center"><p style="font-size:32px;font-weight:600;color:#14233D;background:#FFFFFF;border:2px solid #E6E0D3;border-radius:40px;padding:2px 24px;line-height:1.4;white-space:nowrap;box-shadow:0 4px 12px rgba(20,35,61,0.08)">พ่อ</p></div>
+<div style="position:absolute;left:270px;top:86px;width:240px;height:64px;display:flex;align-items:center;justify-content:center"><p style="font-size:32px;font-weight:600;color:#9C4A3C;background:#FFFFFF;border:2px solid #E6E0D3;border-radius:40px;padding:2px 24px;line-height:1.4;white-space:nowrap;box-shadow:0 4px 12px rgba(20,35,61,0.08)">แม่</p></div>
+<div style="position:absolute;left:378px;top:180px;width:240px;height:64px;display:flex;align-items:center;justify-content:center"><p style="font-size:32px;font-weight:600;color:#8C6420;background:#FFFFFF;border:2px solid #E6E0D3;border-radius:40px;padding:2px 24px;line-height:1.4;white-space:nowrap;box-shadow:0 4px 12px rgba(20,35,61,0.08)">แฟน</p></div>
+<div style="position:absolute;left:402px;top:325px;width:240px;height:64px;display:flex;align-items:center;justify-content:center"><p style="font-size:32px;font-weight:600;color:#14233D;background:#FFFFFF;border:2px solid #E6E0D3;border-radius:40px;padding:2px 24px;line-height:1.4;white-space:nowrap;box-shadow:0 4px 12px rgba(20,35,61,0.08)">เจ้านาย</p></div>
+<div style="position:absolute;left:332px;top:453px;width:240px;height:64px;display:flex;align-items:center;justify-content:center"><p style="font-size:32px;font-weight:600;color:#4A6C96;background:#FFFFFF;border:2px solid #E6E0D3;border-radius:40px;padding:2px 24px;line-height:1.4;white-space:nowrap;box-shadow:0 4px 12px rgba(20,35,61,0.08)">ลูกน้อง</p></div>
+</div>
 </section></div>
 <div class="slide"><section id="blindspot" data-transition="fade" style="background:#F6F4EF;color:#14233D;font-family:'IBM Plex Sans Thai', Tahoma, sans-serif;padding:128px;display:flex;flex-direction:column;gap:16px">
 <p style="font-size:28px;letter-spacing:6px;color:#8C6420;font-weight:600">ลองดูวงกลมนี้ · ALL WE KNOW</p>
@@ -140,33 +172,39 @@ html.m{scroll-behavior:smooth}
 <p class="m-hide" data-build-in="fade 3" style="position:absolute;left:760px;top:290px;width:400px;font-size:24px;letter-spacing:4px;font-weight:600;color:#8C6420;background:#ECE8DF;text-align:center">วนซ้ำแบบเดิม</p>
 <p data-build-in="fade 4" style="position:absolute;left:128px;top:830px;width:1664px;font-size:32px;line-height:1.5;font-weight:600;color:#14233D;text-align:center">เหตุการณ์จบแล้ว แต่ความเชื่อยังติดมา — ถ้าไม่มีอะไรเปลี่ยน อนาคตก็คืออดีตซ้ำเดิม</p>
 </section></div>
-<div class="slide"><section id="board" data-transition="fade" style="background:#ECE8DF;color:#14233D;font-family:'IBM Plex Sans Thai', Tahoma, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
-<h2 style="font-family:'Noto Serif Thai', Georgia, serif;font-size:72px;font-weight:600;line-height:1.3;color:#14233D">กระดานประสบการณ์</h2>
-<div style="display:flex;flex-direction:row;gap:48px;align-items:start">
-<img src="images/board.jpg" alt="กระดานไวท์บอร์ดที่เขียนประสบการณ์ชีวิตเต็มกระดาน" style="width:870px;height:580px;object-fit:contain;border-radius:12px;box-shadow:0 12px 40px rgba(20,35,61,0.18)">
-<div style="display:flex;flex-direction:column;flex:1">
-<div style="display:flex;flex-direction:row;gap:20px;padding:0 16px 14px;border-bottom:2px solid #14233D">
-<div style="display:flex;flex-direction:column;flex:1"><p style="font-size:26px;font-weight:700;color:#14233D">อดีต</p><p style="font-size:24px;color:#6A7180">เหตุการณ์</p></div>
-<div style="display:flex;flex-direction:column;flex:1"><p style="font-size:26px;font-weight:700;color:#8C6420">ปัจจุบัน</p><p style="font-size:24px;color:#8C6420">ความเชื่อที่ติดมา</p></div>
-</div>
-<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:22px 16px;background:#F3E6CC;border-bottom:1px solid #D3CCBC">
-<p style="font-size:30px;line-height:1.4;color:#4A5263;flex:1">ถูกเปรียบเทียบ กับคนอื่นตั้งแต่เด็ก</p>
-<p style="font-size:30px;line-height:1.4;font-weight:700;color:#14233D;flex:1">“ฉันไม่ดีพอ”</p>
-</div>
-<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:22px 16px;border-bottom:1px solid #D3CCBC">
-<p style="font-size:30px;line-height:1.4;color:#4A5263;flex:1">ธุรกิจแรกเจ๊ง</p>
-<p style="font-size:30px;line-height:1.4;font-weight:700;color:#14233D;flex:1">“กลัวการเริ่มใหม่”</p>
-</div>
-<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:22px 16px;border-bottom:1px solid #D3CCBC">
-<p style="font-size:30px;line-height:1.4;color:#4A5263;flex:1">ความรักครั้งก่อน จบไม่ดี</p>
-<p style="font-size:30px;line-height:1.4;font-weight:700;color:#14233D;flex:1">“ไม่มีใครรักฉันจริง”</p>
-</div>
-<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:22px 16px;border-bottom:1px solid #D3CCBC">
-<p style="font-size:30px;line-height:1.4;color:#4A5263;flex:1">ทนทำงานที่ไม่ชอบ หลายปี</p>
-<p style="font-size:30px;line-height:1.4;font-weight:700;color:#14233D;flex:1">“เสียเวลาไป ตั้งหลายปี”</p>
-</div>
-</div>
-</div>
+<div class="slide"><section id="board" data-transition="fade" style="display:flex; flex-direction:column; gap:40px; padding:128px 128px 160px; background:#ece8df">
+<h2 style="font-family:'Noto Serif Thai', Georgia, serif; font-size:72px; font-weight:600; line-height:1.3; color:#14233d">ประสบการณ์ในชีวิต</h2>
+<div style="display:flex; flex-direction:row; gap:48px; align-items:start">
+    <img src="images/board.jpg" alt="กระดานไวท์บอร์ดที่เขียนประสบการณ์ชีวิตเต็มกระดาน" style="width:870px; height:580px; border-radius:12px; object-fit:contain; box-shadow:0 12px 40px #14233d2e">
+    <div style="display:flex; flex-direction:column; flex:1">
+      <div style="display:flex; flex-direction:row; gap:20px; padding:0 16px 14px; border-bottom:2px solid #14233d">
+        <div style="display:flex; flex-direction:column; flex:1">
+          <p style="font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:26px; font-weight:700; color:#14233d">อดีต</p>
+          <p style="font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:24px; color:#6a7180">เหตุการณ์</p>
+        </div>
+        <div style="display:flex; flex-direction:column; flex:1">
+          <p style="font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:26px; font-weight:700; color:#8c6420">ปัจจุบัน</p>
+          <p style="font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:24px; color:#8c6420">ความเชื่อที่ติดมา</p>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:center; padding:22px 16px; background:#f3e6cc; border-bottom:1px solid #d3ccbc">
+        <p style="flex:1; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:30px; line-height:1.4; color:#4a5263">ถูกเปรียบเทียบ กับคนอื่นตั้งแต่เด็ก</p>
+        <p style="flex:1; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:30px; font-weight:700; line-height:1.4; color:#14233d">“ฉันไม่ดีพอ”</p>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:center; padding:22px 16px; border-bottom:1px solid #d3ccbc">
+        <p style="flex:1; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:30px; line-height:1.4; color:#4a5263">ธุรกิจแรกเจ๊ง</p>
+        <p style="flex:1; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:30px; font-weight:700; line-height:1.4; color:#14233d">“กลัวการเริ่มใหม่”</p>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:center; padding:22px 16px; border-bottom:1px solid #d3ccbc">
+        <p style="flex:1; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:30px; line-height:1.4; color:#4a5263">ความรักครั้งก่อน จบไม่ดี</p>
+        <p style="flex:1; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:30px; font-weight:700; line-height:1.4; color:#14233d">“ไม่มีใครรักฉันจริง”</p>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:center; padding:22px 16px; border-bottom:1px solid #d3ccbc">
+        <p style="flex:1; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:30px; line-height:1.4; color:#4a5263">ทนทำงานที่ไม่ชอบ หลายปี</p>
+        <p style="flex:1; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:30px; font-weight:700; line-height:1.4; color:#14233d">“เสียเวลาไป ตั้งหลายปี”</p>
+      </div>
+    </div>
+  </div>
 </section></div>
 <div class="slide"><section id="newfuture" data-transition="fade" style="background:#F6F4EF;color:#14233D;font-family:'IBM Plex Sans Thai', Tahoma, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:16px">
 <h2 style="position:absolute;left:128px;top:128px;width:180px;font-family:'Noto Serif Thai', Georgia, serif;font-size:72px;font-weight:600;line-height:1.3;color:#6A7180;white-space:nowrap">อดีต</h2>
@@ -188,10 +226,10 @@ html.m{scroll-behavior:smooth}
 </div>
 <p data-build-in="fade 3" style="position:absolute;left:128px;top:800px;width:1664px;font-size:32px;line-height:1.5;font-weight:600;color:#14233D;text-align:center">อดีตอยู่ในส่วนของอดีต — วันนี้เราใช้ชีวิต จากอนาคตที่เราจะไปสู่</p>
 </section></div>
-<div class="slide"><section id="blankboard" data-transition="fade" style="background:#F6F4EF;color:#14233D;font-family:'IBM Plex Sans Thai', Tahoma, sans-serif;padding:120px 128px 140px;display:flex;flex-direction:column;align-items:center;gap:36px">
-<h2 style="font-family:'Noto Serif Thai', Georgia, serif;font-size:72px;font-weight:600;line-height:1.3;color:#14233D;text-align:center">ถ้าวันนี้ คุณมีกระดานโล่งๆ <span style="color:#8C6420">คุณจะสร้างอะไร?</span></h2>
-<img src="images/blank.jpg" alt="กระดานไวท์บอร์ดว่างเปล่า" style="width:1050px;height:700px;object-fit:contain;border-radius:12px;box-shadow:0 16px 48px rgba(20,35,61,0.18)">
-<p style="position:absolute;left:128px;bottom:56px;width:1664px;font-size:28px;color:#8C6420;text-align:center">ที่ Landmark Forum คุณจะได้เขียนกระดานใหม่ ด้วยตัวเอง</p>
+<div class="slide"><section id="blankboard" data-transition="fade" style="display:flex; flex-direction:column; gap:36px; align-items:center; padding:120px 128px 140px; background:#f6f4ef">
+<h2 style="font-family:'Noto Serif Thai', Georgia, serif; font-size:72px; font-weight:600; line-height:1.3; text-align:center; color:#14233d">ถ้าวันนี้ ชีวิตคุณเป็นกระดานโล่งๆ <span style="color:#8c6420">คุณจะสร้างอะไร?</span></h2>
+<img src="images/blank.jpg" alt="กระดานไวท์บอร์ดว่างเปล่า" style="width:1050px; height:700px; border-radius:12px; object-fit:contain; box-shadow:0 16px 48px #14233d2e">
+<p style="position:absolute; bottom:56px; left:128px; width:1664px; font-family:'IBM Plex Sans Thai', Tahoma, sans-serif; font-size:28px; text-align:center; color:#8c6420">ที่ Landmark Forum คุณจะได้เขียนกระดานใหม่ ด้วยตัวเอง</p>
 </section></div>
 <div class="slide"><section id="people" data-transition="fade" style="background:#F6F4EF;color:#14233D;font-family:'IBM Plex Sans Thai', Tahoma, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:16px">
 <p style="font-size:28px;letter-spacing:6px;color:#8C6420;font-weight:600">ผู้เข้าร่วม · WHO JOINS</p>

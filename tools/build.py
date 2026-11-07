@@ -141,13 +141,13 @@ html.m,html.m body{{height:auto;overflow:auto}}
 .m .slide.seen{{opacity:1;transform:none}}
 html.m{{scroll-behavior:smooth}}
 .m .slide>section{{width:760px!important;height:auto!important;padding:72px 40px!important;display:flex!important;flex-direction:column!important;gap:28px!important;overflow:visible}}
-.m section *:not(.pie *){{position:static!important;left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;max-width:100%!important}}
+.m section *:not(.pie *):not([id=people-ring] *){{position:static!important;left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;max-width:100%!important}}
 .m section div:has(>img),.m section div:has(>div>table){{flex-wrap:wrap}}
 .m section h1{{font-size:120px!important}}
 .m section div[style*="width:460px"]{{width:100%!important}}
 .m section img{{height:auto!important}}
 .m section div:has(>table){{flex-basis:100%!important}}
-.m section div.pie{{position:relative!important;align-self:center;flex:none}}
+.m .slide section div.pie,.m .slide section div[id=people-ring]{{position:relative!important;align-self:center;flex:none}}
 .m section .m-hide{{display:none!important}}
 .m section .m-arrow{{rotate:90deg;align-self:center;margin:8px 0}}
 .m section>div[style*="border-radius:50%"],.m section>p[style*="width:340px"],.m section>div[style*="width:392px"]{{align-self:center}}
